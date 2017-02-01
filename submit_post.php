@@ -22,5 +22,17 @@ if (strlen($author) == 0) {
 	exit;
 } 
 
+if (strlen($title) > 0 && strlen($content) > 0 && strlen($author) > 0) {
+
+	include_once 'index.php';
+
+	$newArticle = ORM::for_table('posts')->create();
+
+	$newArticle->title = $title;
+	$newArticle->content = $content;
+	$newArticle->author = $author;
+	$newArticle->created_at = $createdAt;
+
+	$newArticle->save();
 
 ?>
