@@ -17,23 +17,33 @@ $author = $createArticle->author;
 <head>
 	<meta charset="UTF-8">
 	<title>Création d'un nouvel article</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.css">
 </head>
 <body>
 
-	<form method="POST" action="submit_postCreate.php">
+	<div class="ui center aligned container">
+		<h2>Création d'un article</h2>
 
-		<label for="title">Titre</label>
-		<input id="title" type="text" name="title">
+		<form class="ui small form" method="POST" action="submit_postCreate.php">
 
-		<label for="content">Article</label>
-		<input id="content" type="text" name="content">
+			<div class="field">
+				<label for="title">Titre</label>
+				<input id="title" type="text" name="title">	
+			</div>
 
-		<label for="author">Auteur</label>
-		<input id="author" type="text" name="author">
+			<div class="field">
+				<label for="content">Article</label>
+				<input id="content" type="text" name="content">
+			</div>
 
-		<input value="Ajouter" type="submit" name="submit">
+			<div class="field">
+				<label for="author">Auteur</label>
+				<input id="author" type="text" name="author">
+			</div>
 
-	</form>
+			<div class="ui blue submit button">Créer</div>
+		</form>
+	</div>
 
 </body>
 </html>

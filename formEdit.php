@@ -7,7 +7,6 @@ ORM::configure('username', 'root');
 ORM::configure('password', 'root');
 
 $id = $_POST['id'];
-var_dump($id);
 
 $editArticle = ORM::for_table('posts')->find_one($id);
 
@@ -20,26 +19,37 @@ $id = $editArticle->id;
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Edition d'un nouvel article</title>
+	<title>Edition de l'article sélectionné</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.css">
 </head>
 <body>
 
-	<form method="POST" action="submit_postEdition.php">
-		
-		<input type="hidden" type="text" name="id" value="<?= $id ?>">
+	<div class="ui center aligned container">
+		<h2>Edition de l'article sélectionné</h2>
 
-		<label for="title">Titre</label>
-		<input id="title" type="text" name="title" value="<?= $title ?>">
+		<form class="ui small form" method="POST" action="submit_postEdition.php">
 
-		<label for="content">Article</label>
-		<input id="content" type="text" name="content" value="<?= $content ?>">
+			<div class="field">
+				<input type="hidden" type="text" name="id" value="<?= $id ?>">
 
-		<label for="author">Auteur</label>
-		<input id="author" type="text" name="author" value="<?= $author ?>">
+				<label for="title">Titre</label>
+				<input id="title" type="text" name="title" value="<?= $title ?>">
+			</div>
 
-		<input value="Editer" type="submit" name="submit">
+			<div class="field">
 
-	</form>
+				<label for="content">Article</label>
+				<input id="content" type="text" name="content" value="<?= $content ?>">
+			</div>
+
+			<div class="field">
+				<label for="author">Auteur</label>
+				<input id="author" type="text" name="author" value="<?= $author ?>">
+			</div>
+
+			<div class="ui blue submit button">Editer</div>
+		</form>
+	</div>
 
 </body>
 </html>
