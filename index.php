@@ -28,6 +28,18 @@ $data = ORM::for_table('posts')->find_many();
 			<button>Editer</button>
 		</form>
 
+		<form method="POST" action="submit_comment.php">
+
+			<label for="content">Commentaire</label>
+			<input id="content" name="content" type="text">
+
+			<label for="author">Auteur</label>
+			<input id="author" name="author" type="text">
+
+			<input value="Valider" type="submit" name="submit">
+
+		</form>
+
 	<?php endforeach; ?>
 
 	<form action="formCreate.php">
