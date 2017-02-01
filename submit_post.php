@@ -35,4 +35,7 @@ if (strlen($title) > 0 && strlen($content) > 0 && strlen($author) > 0) {
 
 	$newArticle->save();
 
+	header("Location: index.php");
+	exit;
+}
 ?>
