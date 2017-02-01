@@ -7,6 +7,7 @@ ORM::configure('username', 'root');
 ORM::configure('password', 'root');
 
 $id = $_POST['id'];
+var_dump($id);
 
 $editArticle = ORM::for_table('posts')->find_one($id);
 
@@ -23,9 +24,9 @@ $id = $editArticle->id;
 </head>
 <body>
 
-	<form method="POST" action="submit_post.php">
+	<form method="POST" action="submit_postEdition.php">
 		
-		<input type="hidden" type="text" name="id" value="<?php $id ?>">
+		<input type="hidden" type="text" name="id" value="<?= $id ?>">
 
 		<label for="title">Titre</label>
 		<input id="title" type="text" name="title" value="<?= $title ?>">

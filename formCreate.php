@@ -11,7 +11,6 @@ $createArticle = ORM::for_table('posts')->find_one();
 $title = $createArticle->title;
 $content = $createArticle->content;
 $author = $createArticle->author;
-$id = $createArticle->id;
 
 ?><!DOCTYPE html>
 <html lang="en">
