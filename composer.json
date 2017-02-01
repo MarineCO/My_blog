@@ -1,0 +1,12 @@
+{
+    "name": "simplon/my_blog-010217",
+    "authors": [
+        {
+            "name": "marineco",
+            "email": "marinecolonge@gmail.com"
+        }
+    ],
+    "require": {
+        "j4mie/idiorm": "^1.5"
+    }
+}
