@@ -24,5 +24,9 @@ $data = ORM::for_table('posts')->find_many();
 		<h3><?= $article->author; ?>, le <?= $article->created_at; ?></h3>
 
 	<?php endforeach; ?>
+
+	<a href="form.php">
+		<button>Ajouter un article</button>
+	</a>
 </body>
 </html>
