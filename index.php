@@ -16,5 +16,13 @@ $data = ORM::for_table('posts')->find_many();
 </head>
 <body>
 	<h1>Mon blog</h1>
+
+	<?php foreach ($data as $article) : ?>
+
+		<h2><?= $article->title; ?></h2>
+		<p><?= $article->content; ?></p>
+		<h3><?= $article->author; ?>, le <?= $article->created_at; ?></h3>
+
+	<?php endforeach; ?>
 </body>
 </html>
