@@ -20,7 +20,7 @@ $author = $createArticle->author;
 </head>
 <body>
 
-	<form method="POST" action="submit_post.php">
+	<form method="POST" action="submit_postCreate.php">
 
 		<label for="title">Titre</label>
 		<input id="title" type="text" name="title">
