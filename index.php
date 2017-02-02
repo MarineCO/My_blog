@@ -6,6 +6,11 @@ ORM::configure('mysql:host=localhost;dbname=my_blog');
 ORM::configure('username', 'root');
 ORM::configure('password', 'root');
 
+
+// - récupérer id du post dans table posts
+// - associé cet id au post_id de la table comments
+
+
 $dataArticle = ORM::for_table('posts')->find_many();
 
 ?><!DOCTYPE html>
@@ -16,41 +21,40 @@ $dataArticle = ORM::for_table('posts')->find_many();
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.css">
 </head>
 <body>
-
-	<div class="ui segment">
-		<h1 class="ui center aligned header">Mon blog</h1>
-	</div>
-
-	<table class="ui celled padded table">
+	<table class="ui inverted celled padded table">
 		<thead>
 			<tr>
 				<th>Titre</th>
 				<th>Article</th>
 				<th>Auteur</th>
 				<th>Créé le</th>
+				<th>Commentaires</th>
 				<th>Poster un commentaire</th>
 			</tr>
 		</thead>
 		<tbody>
 			<?php foreach ($dataArticle as $article) : ?>
 				<tr>
-					<td class="ui center aligned header">
+					<td class="ui inverted center aligned header">
 						<h2><?= $article->title; ?></h2>
 					</td>
-					<td class="ui center aligned header">
+					<td class="ui inverted center aligned header">
 						<p><?= $article->content; ?></p>
 						<form method="POST" action="formEdit.php?id=<?= $article->id; ?>">
 							<input type="hidden" name="id" value="<?= $article->id; ?>">
-							<button>Editer</button>
+							<button class="ui yellow inverted button">Editer</button>
 						</form>
 					</td>
-					<td class="ui center aligned header">
+					<td class="ui inverted center aligned header">
 						<h3><?= $article->author; ?></h3>
 					</td>
-					<td class="ui center aligned header">
+					<td class="ui inverted center aligned header">
 						<h3><?= $article->created_at; ?></h3>
 					</td>
-					<td class="ui center aligned header">
+					<td class="ui inverted center aligned header">
+						<!-- Placer les commentaires enregistrés ds BDD ici -->
+					</td>
+					<td class="ui inverted center aligned header">
 						<form method="POST" action="submit_comment.php">
 
 							<label for="content">Commentaire</label>
@@ -59,7 +63,7 @@ $dataArticle = ORM::for_table('posts')->find_many();
 							<label for="author">Auteur</label>
 							<input id="author" name="author" type="text">
 
-							<input value="Valider" type="submit" name="submit">
+							<input class="ui submit pink inverted button" value="Valider" type="submit" name="submit">
 
 						</form>
 					</td>
@@ -69,7 +73,7 @@ $dataArticle = ORM::for_table('posts')->find_many();
 	</table>
 
 	<form action="formCreate.php">
-		<button>Ajouter un article</button>
+		<button class="ui green button">Ajouter un article</button>
 	</form>
 </body>
 </html>
