@@ -6,11 +6,6 @@ ORM::configure('mysql:host=localhost;dbname=my_blog');
 ORM::configure('username', 'root');
 ORM::configure('password', 'root');
 
-
-// - récupérer id du post dans table posts
-// - associé cet id au post_id de la table comments
-
-
 $dataArticle = ORM::for_table('posts')->find_many();
 
 ?><!DOCTYPE html>
