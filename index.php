@@ -21,7 +21,12 @@ $dataArticle = ORM::for_table('posts')->find_many();
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.css">
 </head>
 <body>
-	<table class="ui inverted celled padded table">
+
+	<div class="ui segment">
+		<h1 class="ui center aligned header">Mon blog</h1>
+	</div>
+
+	<table class="ui celled padded table">
 		<thead>
 			<tr>
 				<th>Titre</th>
@@ -35,26 +40,26 @@ $dataArticle = ORM::for_table('posts')->find_many();
 		<tbody>
 			<?php foreach ($dataArticle as $article) : ?>
 				<tr>
-					<td class="ui inverted center aligned header">
+					<td class="ui center aligned header">
 						<h2><?= $article->title; ?></h2>
 					</td>
-					<td class="ui inverted center aligned header">
+					<td class="ui center aligned header">
 						<p><?= $article->content; ?></p>
 						<form method="POST" action="formEdit.php?id=<?= $article->id; ?>">
 							<input type="hidden" name="id" value="<?= $article->id; ?>">
-							<button class="ui yellow inverted button">Editer</button>
+							<button class="ui yellow button">Editer</button>
 						</form>
 					</td>
-					<td class="ui inverted center aligned header">
+					<td class="ui center aligned header">
 						<h3><?= $article->author; ?></h3>
 					</td>
-					<td class="ui inverted center aligned header">
+					<td class="ui center aligned header">
 						<h3><?= $article->created_at; ?></h3>
 					</td>
-					<td class="ui inverted center aligned header">
+					<td class="ui center aligned header">
 						<!-- Placer les commentaires enregistrés ds BDD ici -->
 					</td>
-					<td class="ui inverted center aligned header">
+					<td class="ui center aligned header">
 						<form method="POST" action="submit_comment.php">
 
 							<label for="content">Commentaire</label>
@@ -63,7 +68,7 @@ $dataArticle = ORM::for_table('posts')->find_many();
 							<label for="author">Auteur</label>
 							<input id="author" name="author" type="text">
 
-							<input class="ui submit pink inverted button" value="Valider" type="submit" name="submit">
+							<input class="ui submit pink button" value="Valider" type="submit" name="submit">
 
 						</form>
 					</td>
