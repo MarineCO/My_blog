@@ -1,4 +1,5 @@
 <?php 
+require 'vendor/autoload.php';
 try {
 	$comment = $_POST['content'];
 	$author = $_POST['author'];
@@ -11,14 +12,13 @@ try {
 
 	} else {
 
-		include_once 'index.php';
+		ORM::configure('mysql:host=localhost;dbname=my_blog');
+		ORM::configure('username', 'root');
+		ORM::configure('password', 'root');
 
-		$post_id = 1;
-		// $post_id = $_POST['post_id'];
-		var_dump($post_id);
+		$post_id = $_POST['post_id'];
 
 		$newComment = ORM::for_table('comments')->create();
-
 		$newComment->post_id = $post_id;
 		$newComment->content = $comment;
 		$newComment->author = $author;
@@ -28,7 +28,7 @@ try {
 		header("Location: index.php");
 		exit;
 	}
-}catch(exception $e) {
+}catch(Exception $e) {
 	var_dump($e);
 	die();
 }
