@@ -40,8 +40,9 @@ $author = $createArticle->author;
 				<label for="author">Auteur</label>
 				<input id="author" type="text" name="author">
 			</div>
-
-			<div class="ui blue submit button">Créer</div>
+			<form method="POST" action="submit_postCreate.php">
+				<button class="ui blue submit button">Créer</button>
+			</form>
 		</form>
 	</div>
 

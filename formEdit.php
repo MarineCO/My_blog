@@ -47,7 +47,9 @@ $id = $editArticle->id;
 				<input id="author" type="text" name="author" value="<?= $author ?>">
 			</div>
 
-			<div class="ui blue submit button">Editer</div>
+			<form method="POST" action="submit_postEdition.php">
+				<button class="ui blue submit button">Editer</button>
+			</form>
 		</form>
 	</div>
 
