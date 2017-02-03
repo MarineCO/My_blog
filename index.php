@@ -7,7 +7,7 @@ ORM::configure('username', 'root');
 ORM::configure('password', 'root');
 
 $dataArticle = ORM::for_table('posts')->find_many();
-try{
+
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,8 +56,7 @@ try{
 						<h3><?= $article->created_at; ?></h3>
 					</td>
 					<td class="ui center aligned header">
-					<?php $id=$article->id; $dataComment = ORM::for_table('comments')->where('post_id', $id)->find_many();
-					var_dump($article->id);  ?>
+					<?php $dataComment = ORM::for_table('comments')->where('post_id', $article->id)->find_many(); ?>
 
 						<?php foreach ($dataComment as $comment): ?>
 							
@@ -89,6 +88,3 @@ try{
 </body>
 </html>
 <?php
-}catch(Exception $e){
-	var_dump($e);
-}

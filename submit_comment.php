@@ -1,35 +1,32 @@
 <?php 
-try {
-	$comment = $_POST['content'];
-	$author = $_POST['author'];
-	var_dump($_POST);
+require 'vendor/autoload.php';
 
-	if (empty($comment) && empty($author)) {
+ORM::configure('mysql:host=localhost;dbname=my_blog');
+ORM::configure('username', 'root');
+ORM::configure('password', 'root');
 
-		header("Location: index.php");
-		exit;
+$comment = $_POST['content'];
+$author = $_POST['author'];
 
-	} else {
+if (empty($comment) && empty($author)) {
 
-		include_once 'index.php';
+	header("Location: index.php");
+	exit;
 
-		$post_id = 1;
-		// $post_id = $_POST['post_id'];
-		var_dump($post_id);
+} else {
 
-		$newComment = ORM::for_table('comments')->create();
+	$post_id = $_POST['post_id'];
 
-		$newComment->post_id = $post_id;
-		$newComment->content = $comment;
-		$newComment->author = $author;
+	$newComment = ORM::for_table('comments')->create();
 
-		$newComment->save();
+	$newComment->post_id = $post_id;
+	$newComment->content = $comment;
+	$newComment->author = $author;
 
-		header("Location: index.php");
-		exit;
-	}
-}catch(exception $e) {
-	var_dump($e);
-	die();
+	$newComment->save();
+
+	header("Location: index.php");
+	exit;
 }
+
 ?>
