@@ -6,13 +6,8 @@ ORM::configure('mysql:host=localhost;dbname=my_blog');
 ORM::configure('username', 'root');
 ORM::configure('password', 'root');
 
-
-// - récupérer id du post dans table posts
-// - associé cet id au post_id de la table comments
-
-
 $dataArticle = ORM::for_table('posts')->find_many();
-
+try{
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +20,10 @@ $dataArticle = ORM::for_table('posts')->find_many();
 	<div class="ui segment">
 		<h1 class="ui center aligned header">Mon blog</h1>
 	</div>
+
+	<form action="formCreate.php">
+		<button class="ui green button">Ajouter un article</button>
+	</form>
 
 	<table class="ui celled padded table">
 		<thead>
@@ -57,10 +56,20 @@ $dataArticle = ORM::for_table('posts')->find_many();
 						<h3><?= $article->created_at; ?></h3>
 					</td>
 					<td class="ui center aligned header">
-						<!-- Placer les commentaires enregistrés ds BDD ici -->
+					<?php $id=$article->id; $dataComment = ORM::for_table('comments')->where('post_id', $id)->find_many();
+					var_dump($article->id);  ?>
+
+						<?php foreach ($dataComment as $comment): ?>
+							
+							<p><?= $comment->content; ?></p>
+							<p><?= $comment->author; ?></p>
+
+						<?php endforeach; ?>
 					</td>
 					<td class="ui center aligned header">
 						<form method="POST" action="submit_comment.php">
+							
+							<input type="hidden" name="post_id" value="<?= $article->id; ?>">
 
 							<label for="content">Commentaire</label>
 							<input id="content" name="content" type="text">
@@ -68,7 +77,7 @@ $dataArticle = ORM::for_table('posts')->find_many();
 							<label for="author">Auteur</label>
 							<input id="author" name="author" type="text">
 
-							<input class="ui submit pink button" value="Valider" type="submit" name="submit">
+							<input class="ui submit pink button" value="Valider" type="submit">
 
 						</form>
 					</td>
@@ -77,8 +86,9 @@ $dataArticle = ORM::for_table('posts')->find_many();
 		</tbody>
 	</table>
 
-	<form action="formCreate.php">
-		<button class="ui green button">Ajouter un article</button>
-	</form>
 </body>
 </html>
+<?php
+}catch(Exception $e){
+	var_dump($e);
+}
