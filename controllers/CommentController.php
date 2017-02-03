@@ -1,5 +1,7 @@
-<?php 
-require 'vendor/autoload.php';
+<?php
+define('ROOT', __DIR__);
+
+require ROOT.'/../vendor/autoload.php';
 
 ORM::configure('mysql:host=localhost;dbname=my_blog');
 ORM::configure('username', 'root');
@@ -10,7 +12,7 @@ $author = $_POST['author'];
 
 if (empty($comment) && empty($author)) {
 
-	header("Location: index.php");
+	header("Location: ../index.php");
 	exit;
 
 } else {
@@ -25,8 +27,7 @@ if (empty($comment) && empty($author)) {
 
 	$newComment->save();
 
-	header("Location: index.php");
+	header("Location: ../index.php");
 	exit;
 }
-
 ?>

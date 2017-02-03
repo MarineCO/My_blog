@@ -1,5 +1,4 @@
 <?php
-
 $title = $_POST['title'];
 $content = $_POST['content'];
 $author = $_POST['author'];
@@ -29,12 +28,12 @@ if (strlen($title) > 0 && strlen($content) > 0 && strlen($author) > 0) {
 	$newArticle->title = $title;
 	$newArticle->content = $content;
 	$newArticle->author = $author;
-	$newArticle->created_at = $createdAt;
+	//$newArticle->created_at = $createdAt;
 
 	$newArticle->save();
 
+// PROBLEME DE REDIRECTION
 	header("Location: index.php");
 	exit;
 }
-
 ?>

@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 require_once 'vendor/autoload.php';
 
 ORM::configure('mysql:host=localhost;dbname=my_blog');
@@ -21,7 +20,7 @@ $dataArticle = ORM::for_table('posts')->find_many();
 		<h1 class="ui center aligned header">Mon blog</h1>
 	</div>
 
-	<form action="formCreate.php">
+	<form action="views/formCreate.php">
 		<button class="ui green button">Ajouter un article</button>
 	</form>
 
@@ -44,7 +43,7 @@ $dataArticle = ORM::for_table('posts')->find_many();
 					</td>
 					<td class="ui center aligned header">
 						<p><?= $article->content; ?></p>
-						<form method="POST" action="formEdit.php?id=<?= $article->id; ?>">
+						<form method="POST" action="views/formEdit.php?id=<?= $article->id; ?>">
 							<input type="hidden" name="id" value="<?= $article->id; ?>">
 							<button class="ui yellow button">Editer</button>
 						</form>
@@ -66,7 +65,7 @@ $dataArticle = ORM::for_table('posts')->find_many();
 						<?php endforeach; ?>
 					</td>
 					<td class="ui center aligned header">
-						<form method="POST" action="submit_comment.php">
+						<form method="POST" action="controllers/CommentController.php">
 							
 							<input type="hidden" name="post_id" value="<?= $article->id; ?>">
 

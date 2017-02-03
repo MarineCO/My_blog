@@ -1,6 +1,5 @@
-<?php 
-
-require_once 'vendor/autoload.php';
+<?php
+require_once __DIR__.'/../vendor/autoload.php';
 
 ORM::configure('mysql:host=localhost;dbname=my_blog');
 ORM::configure('username', 'root');
